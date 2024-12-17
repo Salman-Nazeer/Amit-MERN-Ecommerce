@@ -14,7 +14,8 @@ import updateUser from "../controller/AdminPanel/updateUser.js";
 import UploadProductController from "../controller/AdminPanel/uploadProduct.js";
 import getProductController from "../controller/AdminPanel/getProduct.js";
 import updateProductController from "../controller/AdminPanel/updateProduct.js";
-import getCategoryProduct from "../controller/Product/getCategoreProduct.js";
+import getCategoryProduct from "../controller/Product/getCategoreProductOne.js";
+import getCategoreWiseProduct from "../controller/Product/getCategoreWiseProduct.js";
 
 router.post("/signup", userSignUpController);
 router.post("/signin", userSignInController);
@@ -30,5 +31,6 @@ router.post("/upload-product", authToken, UploadProductController);
 router.get("/get-product", getProductController);
 router.post("/update-product", authToken, updateProductController);
 router.get("/get-categoryProduct", getCategoryProduct);
+router.post("/category-product", getCategoreWiseProduct);
 
 export default router;
