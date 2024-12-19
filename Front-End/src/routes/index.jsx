@@ -8,6 +8,7 @@ import AdminPanel from "../pages/Admin/adminPanel";
 import AllUser from "../pages/Admin/all-user";
 import AllProducts from "../pages/Admin/allProducts";
 import CategoryProduct from "../pages/category-Product";
+import ProductDetails from "../pages/product-details";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "product-category/:categoryName",
         element: <CategoryProduct />,
+      },
+      {
+        path: "product/:id",
+        element: <ProductDetails />,
       },
       {
         path: "/admin-panel",

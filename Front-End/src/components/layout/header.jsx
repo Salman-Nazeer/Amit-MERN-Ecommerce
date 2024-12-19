@@ -35,7 +35,7 @@ const header = () => {
   };
 
   return (
-    <header className="h-16 shadow-md bg-white">
+    <header className="h-16 shadow-md bg-white fixed w-full z-50">
       <div className="container h-full mx-auto flex items-center justify-between px-4">
         {/* LOGO */}
         <div className="">
