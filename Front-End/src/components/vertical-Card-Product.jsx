@@ -3,6 +3,7 @@ import fetchCategoryWiseProduct from "../helpers/fetchCategoryWiseProduct";
 import displayCurrency from "../helpers/displayCurrency";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import addToCart from "../helpers/addToCart";
+import { Link } from "react-router-dom";
 
 const verticalCardProduct = ({ category, heading }) => {
   const [data, setData] = useState([]);
@@ -80,7 +81,8 @@ const verticalCardProduct = ({ category, heading }) => {
             })
           : data.map((product, index) => {
               return (
-                <div
+                <Link
+                  to={"product/" + product?._id}
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] bg-white rounded-md shadow"
                   key={product + index}
                 >
@@ -112,7 +114,7 @@ const verticalCardProduct = ({ category, heading }) => {
                       Add To Cart
                     </button>
                   </div>
-                </div>
+                </Link>
               );
             })}
       </div>
