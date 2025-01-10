@@ -37,13 +37,22 @@ function App() {
           fetchUserDetails, //user datails fetch
         }}
       >
-        <ToastContainer />
+        {/* <ToastContainer />
 
         <Header />
         <main className="min-h-[calc(100vh-120px)] pt-16">
           <Outlet />
         </main>
-        <Footer />
+        <Footer className=""/> */}
+
+        <div className="flex flex-col min-h-screen">
+          <ToastContainer />
+          <Header />
+          <main className="flex-grow pt-16">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
       </Context.Provider>
     </>
   );
