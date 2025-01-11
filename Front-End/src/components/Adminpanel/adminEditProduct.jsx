@@ -87,8 +87,8 @@ const adminEditProduct = ({ onClose, productData, fetchData }) => {
   };
 
   return (
-    <div className="fixed w-full h-full bg-slate-200 bg-opacity-35 top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-      <div className="bg-white p-4 pb-14 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
+    <div className="fixed w-full h-full bg-slate-200 bg-opacity-40 top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+      <div className="bg-white p-4 pb-14 rounded w-full max-w-2xl h-full max-h-[78%] overflow-hidden">
         <div className="flex justify-between items-center pb-2">
           <h2 className="font-bold text-lg">Edit Product</h2>
           <div
