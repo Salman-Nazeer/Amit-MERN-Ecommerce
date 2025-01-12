@@ -10,7 +10,8 @@ const horizontalproduct = ({ category, heading }) => {
   const [loading, setLoading] = useState(false);
   const loadingList = new Array(13).fill(null);
 
-  const [scroll, setScroll] = useState(0);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(false);
   const scrollElement = useRef();
 
   const fetchData = async () => {
@@ -25,6 +26,24 @@ const horizontalproduct = ({ category, heading }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollElement.current;
+      setShowLeftButton(scrollLeft > 0);
+      setShowRightButton(scrollLeft + clientWidth < scrollWidth);
+    };
+
+    const element = scrollElement.current;
+    element.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      element.removeEventListener("scroll", handleScroll);
+    };
+  }, [data]);
+
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
   };
@@ -38,26 +57,24 @@ const horizontalproduct = ({ category, heading }) => {
       <h2 className="text-2xl font-semibold py-4">{heading}</h2>
 
       <div
-        className=" flex items-center gap-4 md:gap-6 overflow-scroll scrollbar-none transition-all"
+        className="flex items-center gap-4 md:gap-6 overflow-x-scroll scrollbar-none transition-all"
         ref={scrollElement}
       >
-        {data.length > 3 ? (
-          <>
-            <button
-              className="bg-white rounded-full p-1 shadow-md absolute left-0 text-lg hidden md:block"
-              onClick={scrollLeft}
-            >
-              <FaAngleLeft />
-            </button>
-            <button
-              className="bg-white rounded-full p-1 shadow-md absolute right-0 text-lg hidden md:block"
-              onClick={scrollRight}
-            >
-              <FaAngleRight />
-            </button>
-          </>
-        ) : (
-          ""
+        {showLeftButton && (
+          <button
+            className="bg-white rounded-full p-1 shadow-md absolute left-0 text-lg hidden md:block z-20"
+            onClick={scrollLeft}
+          >
+            <FaAngleLeft />
+          </button>
+        )}
+        {showRightButton && (
+          <button
+            className="bg-white rounded-full p-1 shadow-md absolute right-0 text-lg hidden md:block z-20"
+            onClick={scrollRight}
+          >
+            <FaAngleRight />
+          </button>
         )}
 
         {loading
